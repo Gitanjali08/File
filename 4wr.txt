@@ -1,0 +1,119 @@
+To build statistical models using the USA_Housing dataset in Weka, follow these steps. We will cover Linear Regression, Ridge Regression, LASSO Regression, Elastic Net, and Polynomial Regression. Note that Weka doesn't natively support LASSO and Elastic Net, so for these, we'll use similar methods like Ridge Regression and incorporate Polynomial Regression differently.
+
+### Step 1: Prepare the Data
+
+1. **Load Data:**
+   - Convert the dataset into ARFF format or ensure it's in CSV format.
+   - Open Weka and select the "Explorer" interface.
+   - Click "Open file..." and load the `USA_Housing.csv` dataset.
+
+2. **Preprocess the Data:**
+   - Go to the "Preprocess" tab.
+   - Ensure there are no missing values. If there are, use the `unsupervised.attribute.ReplaceMissingValues` filter.
+   - Normalize the attributes if necessary using the `unsupervised.attribute.Normalize` filter.
+   - Remove non-informative attributes if present.
+
+### Step 2: Linear Regression
+
+1. **Select Algorithm:**
+   - Go to the "Classify" tab.
+   - Click on "Choose" and select `functions.LinearRegression`.
+
+2. **Configure Parameters:**
+   - Click on the Linear Regression algorithm to set options like attribute selection method if needed.
+
+3. **Evaluate Model:**
+   - Set the "Test options" (use training set, cross-validation, or percentage split).
+   - Click "Start" to build and evaluate the model.
+   - Review the results in the "Classifier output" window.
+
+### Step 3: Ridge Regression
+
+1. **Select Algorithm:**
+   - Go to the "Classify" tab.
+   - Click on "Choose" and select `functions.RidgeRegression`.
+
+2. **Configure Parameters:**
+   - Click on the Ridge Regression algorithm to set parameters like the ridge parameter.
+
+3. **Evaluate Model:**
+   - Set the "Test options" (use training set, cross-validation, or percentage split).
+   - Click "Start" to build and evaluate the model.
+   - Review the results in the "Classifier output" window.
+
+### Step 4: Polynomial Regression
+
+1. **Transform Attributes:**
+   - Go to the "Preprocess" tab.
+   - Click on "Choose" under "Filter".
+   - Select `weka.filters.unsupervised.attribute.PolyNominalExpansion` to create polynomial attributes.
+   - Apply the filter to transform the dataset.
+
+2. **Select Algorithm:**
+   - Go to the "Classify" tab.
+   - Click on "Choose" and select `functions.LinearRegression`.
+
+3. **Configure Parameters:**
+   - Click on the Linear Regression algorithm to set options like attribute selection method if needed.
+
+4. **Evaluate Model:**
+   - Set the "Test options" (use training set, cross-validation, or percentage split).
+   - Click "Start" to build and evaluate the model.
+   - Review the results in the "Classifier output" window.
+
+### Step 5: Summary of Results
+
+After evaluating each model, you can compile the results to compare performance metrics such as RMSE (Root Mean Squared Error) and R² (coefficient of determination).
+
+### Example Workflow in Weka
+
+1. **Load Dataset:**
+   - Load `USA_Housing.csv` or `USA_Housing.arff` into Weka.
+
+2. **Preprocess Data:**
+   - Replace missing values.
+   - Normalize attributes.
+   - Remove non-informative attributes.
+
+3. **Build Models:**
+   - **Linear Regression:**
+     - Choose `functions.LinearRegression`.
+     - Configure parameters if needed.
+     - Evaluate using cross-validation or percentage split.
+
+   - **Ridge Regression:**
+     - Choose `functions.RidgeRegression`.
+     - Configure parameters if needed.
+     - Evaluate using cross-validation or percentage split.
+
+   - **Polynomial Regression:**
+     - Use `weka.filters.unsupervised.attribute.PolyNominalExpansion` filter.
+     - Choose `functions.LinearRegression`.
+     - Configure parameters if needed.
+     - Evaluate using cross-validation or percentage split.
+
+### Summary Report
+
+#### Data Preprocessing
+
+- **Missing Values:** Replaced missing values.
+- **Normalization:** Normalized numerical attributes.
+- **Attribute Removal:** Removed non-informative attributes.
+
+#### Model Evaluation
+
+- **Linear Regression:**
+  - RMSE: X
+  - R²: Y
+
+- **Ridge Regression:**
+  - RMSE: X
+  - R²: Y
+
+- **Polynomial Regression:**
+  - RMSE: X
+  - R²: Y
+
+### Conclusion
+
+By following these steps, you will be able to preprocess the dataset, build multiple regression models, and evaluate their performance using Weka. You can compare the results to determine which model best fits the USA_Housing dataset based on RMSE and R² values.
